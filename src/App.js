@@ -6,6 +6,7 @@ import AuthContainer from "./containers/AuthContainer";
 import ProtectedRoute from "./hoc/ProtectedRoute";
 import MenuContainer from "./containers/MenuContainer";
 import { history } from "./utils/history";
+import OrderContainer from "./containers/OrderContainer";
 
 function App(props) {
   return (
@@ -15,6 +16,11 @@ function App(props) {
         <ProtectedRoute
           path="/dashboard"
           component={MenuContainer}
+          isLogin={props.isLogin}
+        />
+        <ProtectedRoute
+          path="/orders/:orderId"
+          component={OrderContainer}
           isLogin={props.isLogin}
         />
       </Router>

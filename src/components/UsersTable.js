@@ -1,55 +1,61 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Table, Row, Col } from "antd";
+import { Link } from "react-router-dom";
 const TableStyle = {
   width: "100%",
   margin: "2rem auto"
 };
 const columns = [
   {
-    title: "Name",
-    dataIndex: "name",
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ["descend", "ascend"]
+    title: "Order ID",
+    dataIndex: "orderId",
+    sorter: (a, b) => a.orderId.length - b.orderId.length,
+    sortDirections: ["descend", "ascend"],
+    render: text => <Link to={`/orders/${text}`}> {text} </Link>
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    defaultSortOrder: "descend",
-    sorter: (a, b) => a.age - b.age
+    title: "Label",
+    dataIndex: "label",
+    sorter: (a, b) => a.label.length - b.label.length,
+    sortDirections: ["descend", "ascend"]
   },
   {
     title: "Address",
     dataIndex: "address",
     sorter: (a, b) => a.address.length - b.address.length,
     sortDirections: ["descend", "ascend"]
+  },
+  {
+    title: "Phone Number",
+    dataIndex: "phoneNumber"
   }
 ];
 
 const data = [
   {
-    key: "1",
-    name: "John Brown",
-    age: 32,
+    orderId: "635b8f10-52a1-400b-8350-ebb85babe49d",
+    label: "John Brown",
+    phoneNumber: "+918950311221",
     address: "New York No. 1 Lake Park"
   },
   {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park"
+    orderId: "610e5235-8712-4b3a-8201-a0d8718e91b8",
+    label: "Mark Zuck",
+    phoneNumber: 32,
+    address: "New York No. 1 Lake Park"
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park"
+    orderId: "ec153884-d4d1-496c-8aac-de79510285ed",
+    label: "Semi Local",
+    phoneNumber: 32,
+    address: "New York No. 1 Lake Park"
   },
   {
-    key: "4",
-    name: "Jim Red",
-    age: 32,
-    address: "London No. 2 Lake Park"
+    orderId: "3a60eaef-2598-4e4e-b614-bd858d964906",
+    label: "Dikshit Kathuria",
+    phoneNumber: 32,
+    address: "New York No. 1 Lake Park"
   }
 ];
 

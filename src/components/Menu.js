@@ -15,7 +15,6 @@ const HeaderStyle = {
 };
 
 const MenuComponent = props => {
-  console.log("I am in menu child");
   const { details, loading } = props;
   return (
     <>
