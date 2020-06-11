@@ -5,13 +5,14 @@ import { sessionState } from "../utils/sessionManager";
 import { history } from "../utils/history";
 export default WrappedComponent => {
   const SessionValidity = props => {
+    console.log("Props in sessinValidity... ", JSON.stringify(props));
     const { onLogout } = props;
     useEffect(() => {
       async function checkSession() {
         if (!(await sessionState())) {
           onLogout();
         } else {
-          history.push("/dashboard");
+          history.push(props.history.location.pathname);
         }
       }
       checkSession();

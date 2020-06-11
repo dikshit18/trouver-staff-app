@@ -19,7 +19,7 @@ const searchBar = props => {
         <Col md={12} lg={12} sm={22} xs={22}>
           <Input style={{ ...TextBoxStyle }} />
           <Button type="primary" style={{ ...ButtonStyle }}>
-            Search Users
+            Search Orders
           </Button>
         </Col>
         <Col md={6} lg={6} sm={1} xs={1}></Col>

@@ -18,10 +18,10 @@ const userList = props => {
       selectedKeys={["staff"]}
     >
       <Menu.Item key="staff" icon={<UserOutlined />}>
-        Staff Members
+        Orders in Delivery
       </Menu.Item>
       <Menu.Item key="customer" icon={<UserOutlined />}>
-        Customers
+        Delivery Ready Orders
       </Menu.Item>
     </Menu>
   );

@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { login } from "../store/actions/index";
+import {
+  fetchOrderDetails,
+  logout,
+  changePassword
+} from "../store/actions/index";
 import SessionValidityHOC from "../hoc/SessionValidity";
 import Order from "../components/Order";
 
 const OrderContainer = props => {
-  console.log("Hello in order");
-  return <Order />;
+  const { onFetchOrderDetails, orderDetails } = props;
+  const logout = () => {
+    props.onLogout();
+  };
+  const changePasswordFormSubmit = values => {
+    props.onChangePassword(values);
+  };
+  useEffect(() => {
+    onFetchOrderDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  // useEffect(() => {
+  //   const
+  // }, [orderDetails]);
+  return (
+    <Order
+      logout={logout}
+      submit={changePasswordFormSubmit}
+      orderDetails={orderDetails}
+    />
+  );
 };
 
 const mapStateToProps = state => {
   return {
-    isLogin: state.auth.isLogin,
-    loading: state.auth.loading
+    orderDetails: state.order.orderDetails
+    // loading: state.auth.loading
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmitHandler: ({ username, password }) => {
-      dispatch(login(username, password));
+    onFetchOrderDetails: orderId => {
+      dispatch(fetchOrderDetails(orderId));
+    },
+
+    onLogout: () => {
+      dispatch(logout());
+    },
+    onChangePassword: values => {
+      dispatch(changePassword(values));
     }
   };
 };
