@@ -29,6 +29,12 @@ const columns = [
   {
     title: "Phone Number",
     dataIndex: "phoneNumber"
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    sorter: (a, b) => a.address.length - b.address.length,
+    sortDirections: ["descend", "ascend"]
   }
 ];
 
@@ -37,25 +43,29 @@ const data = [
     orderId: "635b8f10-52a1-400b-8350-ebb85babe49d",
     label: "John Brown",
     phoneNumber: "+918950311221",
-    address: "New York No. 1 Lake Park"
+    address: "New York No. 1 Lake Park",
+    status: "Unassigned"
   },
   {
     orderId: "610e5235-8712-4b3a-8201-a0d8718e91b8",
     label: "Mark Zuck",
     phoneNumber: 32,
-    address: "New York No. 1 Lake Park"
+    address: "New York No. 1 Lake Park",
+    status: "Unassigned"
   },
   {
     orderId: "ec153884-d4d1-496c-8aac-de79510285ed",
     label: "Semi Local",
     phoneNumber: 32,
-    address: "New York No. 1 Lake Park"
+    address: "New York No. 1 Lake Park",
+    status: "Unassigned"
   },
   {
     orderId: "3a60eaef-2598-4e4e-b614-bd858d964906",
     label: "Dikshit Kathuria",
     phoneNumber: 32,
-    address: "New York No. 1 Lake Park"
+    address: "New York No. 1 Lake Park",
+    status: "Unassigned"
   }
 ];
 
