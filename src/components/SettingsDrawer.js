@@ -18,8 +18,6 @@ const buttonStyles = {
   marginTop: "2rem"
 };
 const SettingsDrawer = props => {
-  console.log("Hello", props.drawerMode);
-
   return (
     <>
       <div className="site-drawer-render-in-current-wrapper">

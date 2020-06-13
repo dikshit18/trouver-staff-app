@@ -25,9 +25,6 @@ const StyledSteps = styled(Steps)`
   margin: 0 auto;
   margin-top: 3rem;
 `;
-const DetailsCard = styled(Card)`
-  margin: 0 auto;
-`;
 
 const warehousesInfo = ["Sonipat", "Panipat", "Karnal", "Kurukshetra"];
 const options =

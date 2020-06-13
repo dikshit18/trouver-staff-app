@@ -26,7 +26,6 @@ export const fetchOrderDetails = () => {
   return dispatch => {
     dispatch(orderStart());
     setTimeout(() => {
-      console.log("I am here");
       const details = {
         orderId: "bbd4ce26-0cea-491d-a570-73a7f99db771",
         timestamp: "",

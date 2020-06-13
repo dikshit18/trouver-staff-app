@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SettingFilled, LogoutOutlined, HomeOutlined } from "@ant-design/icons";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import SettingsDrawer from "../components/SettingsDrawer";
 import { Menu, Layout } from "antd";
 import "antd/dist/antd.css";
@@ -16,12 +17,15 @@ const LogOutStyle = {
 
 const SideKick = props => {
   const [drawerMode, updateDrawerMode] = useState(false);
-  const [selectedKeys, _] = useState(["1"]);
+  const [selectedKeys, updateSelectedKeys] = useState(["1"]);
   const closeDrawer = () => {
     updateDrawerMode(false);
   };
   const onClickSettings = () => {
     updateDrawerMode(!drawerMode);
+  };
+  const onClickHome = () => {
+    props.history.push("/dashboard");
   };
 
   return (
@@ -32,7 +36,7 @@ const SideKick = props => {
         selectable={false}
         mode="inline"
       >
-        <Menu.Item key="1" icon={<HomeOutlined />}>
+        <Menu.Item key="1" icon={<HomeOutlined onClick={onClickHome} />}>
           Home
         </Menu.Item>
         <Menu.Item key="2" icon={<SettingFilled />} onClick={onClickSettings}>
@@ -47,13 +51,9 @@ const SideKick = props => {
           Logout
         </Menu.Item>
       </Menu>
-      <Menu
-        defaultSelectedKeys={["0"]}
-        mode="inline"
-        style={{ ...LogOutStyle }}
-      />
+      <Menu mode="inline" style={{ ...LogOutStyle }} />
     </Sider>
   );
 };
 
-export default SideKick;
+export default withRouter(SideKick);
