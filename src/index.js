@@ -11,13 +11,15 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { menuReducer } from "./store/reducers/Menu";
 import { orderReducer } from "./store/reducers/Order";
+import { setPasswordReducer } from "./store/reducers/SetPassword";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const loggerMiddleware = createLogger();
 const rootReducer = combineReducers({
   auth: authReducer,
   menu: menuReducer,
-  order: orderReducer
+  order: orderReducer,
+  setPassword: setPasswordReducer
 });
 
 const store = createStore(

@@ -4,5 +4,7 @@ export const apiEndpoints = {
   sessionValidity: "/admin/session",
   details: "/admin/details",
   changePassword: "/admin/change-password",
-  orderDetails: "/orders/:orderId"
+  orderDetails: "/orders/:orderId",
+  tokenValidity: "/staff/validate-token",
+  confirmUser: "/staff/confirm-user"
 };
