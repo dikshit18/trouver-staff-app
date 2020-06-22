@@ -22,6 +22,8 @@ export const orderReducer = (state = initialState, action) => {
       };
     case ACTIONS.FETCH_ORDER_START:
       return { ...state, loading: true, error: null };
+    case ACTIONS.TRANSITION_FAILURE:
+      return { ...state, error: action.error };
     default:
       return { ...state };
   }

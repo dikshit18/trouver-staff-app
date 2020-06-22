@@ -41,7 +41,10 @@ const MenuComponent = props => {
             >
               <UserList />
               <SearchBar />
-              <UsersTable />
+              <UsersTable
+                orders={props.orders}
+                isLoadingOrders={props.isLoadingOrders}
+              />
             </Content>
             <Footer />
           </Layout>

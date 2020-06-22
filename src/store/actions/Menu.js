@@ -76,3 +76,39 @@ export const changePassword = values => {
       .catch(error => dispatch(changePasswordFailure(error)));
   };
 };
+
+export const fetchOrdersSuccess = orders => {
+  return {
+    type: ACTIONS.FETCH_ORDERS_SUCCESS,
+    orders
+  };
+};
+export const fetchOrdersFailure = error => {
+  return {
+    type: ACTIONS.FETCH_ORDERS_FAILURE
+  };
+};
+export const fetchOrdersStart = () => {
+  return {
+    type: ACTIONS.FETCH_ORDERS_START
+  };
+};
+export const fetchOrders = () => {
+  return dispatch => {
+    dispatch(fetchOrdersStart());
+    // const config = {
+    //   headers: { Authorization: idToken }
+    // };
+    axios
+      .get("http://localhost:3002/shared/order/details")
+      .then(data => {
+        console.log("Error in orders", data);
+        dispatch(fetchOrdersSuccess(data.data.orders));
+      })
+      .catch(error => {
+        console.log("Error in orders", error);
+        dispatch(fetchOrdersFailure(error));
+      });
+  };
+};
+

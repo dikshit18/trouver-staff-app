@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { details, changePassword } from "../store/actions/index";
+import { details, changePassword, fetchOrders } from "../store/actions/index";
 import Menu from "../components/Menu";
 import { logout } from "../store/actions";
 import SessionValidityHOC from "../hoc/SessionValidity";
@@ -11,10 +11,11 @@ import {
 import { getCookie } from "../utils/cookies";
 
 const MenuContainer = props => {
-  const { onFetchDetails, onLogout } = props;
+  const { onFetchDetails, onLogout, onFetchOrders } = props;
   useEffect(() => {
     onFetchDetails();
-  }, [onFetchDetails]);
+    onFetchOrders();
+  }, [onFetchDetails, onFetchOrders]);
   useEffect(() => {
     let client;
     client = initiateClient();
@@ -80,13 +81,17 @@ const MenuContainer = props => {
       loading={props.loading}
       logout={logout}
       submit={changePasswordFormSubmit}
+      orders={props.orders}
+      isLoadingOrders={props.isLoadingOrders}
     />
   );
 };
 const mapStateToProps = state => {
   return {
     details: state.menu.details,
-    loading: state.menu.loading
+    loading: state.menu.loading,
+    isLoadingOrders: state.menu.isLoadingOrders,
+    orders: state.menu.orders
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -99,6 +104,9 @@ const mapDispatchToProps = dispatch => {
     },
     onChangePassword: values => {
       dispatch(changePassword(values));
+    },
+    onFetchOrders: () => {
+      dispatch(fetchOrders());
     }
   };
 };
